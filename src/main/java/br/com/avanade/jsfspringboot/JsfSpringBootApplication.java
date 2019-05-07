@@ -17,7 +17,6 @@ public class JsfSpringBootApplication implements ServletContextAware {
 		SpringApplication.run(JsfSpringBootApplication.class, args);
 	}
 
-	
 	@Bean
 	public ServletRegistrationBean<FacesServlet> servletRegistrationBean() {
 		FacesServlet servlet = new FacesServlet();
@@ -25,16 +24,17 @@ public class JsfSpringBootApplication implements ServletContextAware {
 		servletRegistrationBean.setLoadOnStartup(1);
 		return servletRegistrationBean;
 	}
-	
+
 	@Bean
 	public ServletContextInitializer servletContextInitializer() {
-		return sc -> {};
+		return sc -> {
+			sc.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
+		};
 	}
-	
+
 	@Override
 	public void setServletContext(ServletContext servletContext) {
 		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 	}
-
 
 }
