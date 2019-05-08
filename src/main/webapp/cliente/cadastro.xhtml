@@ -12,32 +12,58 @@
 	</h:head>
 	
 	<h:body>
-		
-		<p:fieldset legend="Cadastro de Cliente">
-			
+	
 			<h:form>
-				 
-				 <p:growl id="growl" life="4000" />
-				 
-				<h:panelGrid columns="2" cellpadding="5">
+				
+				<h:messages/>
+				
+				<p:panelGrid >
 					
-					<p:outputLabel for="nome" value="Nome/Razão Social: " />
-        			<p:inputText id="nome" value="#{clienteCadastroBean.cliente.nome}"/>
-        			
-        			<p:outputLabel for="cpfOuCnpj" value="CPF/CNPJ: " />
-        			<p:inputText id="cpfOuCnpj"	value="#{clienteCadastroBean.cliente.cpfOuCnpj}"/>
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="4" >Cadastro de Cliente</p:column>
+						</p:row>
+					</f:facet>
 					
-					<p:outputLabel for="email" value="E-mail: " />
-        			<p:inputText id="email"	value="#{clienteCadastroBean.cliente.email}"/>
+					<p:row>
 					
-					<p:commandButton id="iconOnly" action="#{clienteCadastroBean.salvar}" update="growl" 
-									 style="margin-right:20px;" icon="pi pi-save" title="Salvar" value="Salvar"/>
+						<p:column><p:outputLabel for="nome" value="Nome/Razão Social:" /></p:column>
+						<p:column> 
+							<p:inputText id="nome" value="#{clienteCadastroBean.cliente.nome}"/>
+						</p:column>
+						
+						<p:column><p:outputLabel for="cpfOuCnpj" value="CPF/CNPJ:" /></p:column>
+						<p:column> 
+							<p:inputText id="cpfOuCnpj" value="#{clienteCadastroBean.cliente.cpfOuCnpj}"/>
+						</p:column>
+						
+					</p:row>
 					
-				</h:panelGrid>
+					<p:row>
+					
+						<p:column>
+							<p:outputLabel for="email" value="E-mail:"/>
+						</p:column>
+						
+						<p:column colspan="3">
+							<p:inputText type="email" id="email" style="width:98%; " 
+										 value="#{clienteCadastroBean.cliente.email}"/>
+						</p:column>
+						
+					</p:row>
+					
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="4">
+								<p:commandButton action="#{clienteCadastroBean.salvar}"	value="Salvar" />
+							</p:column>
+						</p:row>
+					</f:facet>
+					
+					
+				</p:panelGrid>
 				
 			</h:form>
 			
-		</p:fieldset>
-		
 	</h:body>
 </html>
