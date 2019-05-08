@@ -15,12 +15,8 @@ import br.com.avanade.jsfspringboot.repository.ClienteRepository;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-	private ClienteRepository clienteRepository;
-
 	@Autowired
-	public ClienteServiceImpl(ClienteRepository clienteRepository) {
-		this.clienteRepository = clienteRepository;
-	}
+	private ClienteRepository clienteRepository;
 
 	@Transactional(noRollbackFor = Exception.class)
 	@Override

@@ -2,6 +2,15 @@ package br.com.avanade.jsfspringboot.model;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@MappedSuperclass
 public abstract class EntidadeBase {
 
 	private int id;
@@ -11,6 +20,9 @@ public abstract class EntidadeBase {
 	public EntidadeBase() {
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false, unique = true, updatable = false)
 	public int getId() {
 		return id;
 	}
@@ -19,6 +31,8 @@ public abstract class EntidadeBase {
 		this.id = id;
 	}
 
+	@Temporal(TemporalType.DATE)
+	@Column(name = "data_cadastro", nullable = false, updatable = false)
 	public Calendar getDataCadastro() {
 		return dataCadastro;
 	}
@@ -27,6 +41,8 @@ public abstract class EntidadeBase {
 		this.dataCadastro = dataCadastro;
 	}
 
+	@Temporal(TemporalType.DATE)
+	@Column(name = "data_alteracao", nullable = false, updatable = false)
 	public Calendar getDataAlteracao() {
 		return dataAlteracao;
 	}
