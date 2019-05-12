@@ -52,7 +52,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<Cliente> buscatTodos() {
+	public List<Cliente> buscarTodos() {
 		return this.clienteRepository.findAll();
 	}
 

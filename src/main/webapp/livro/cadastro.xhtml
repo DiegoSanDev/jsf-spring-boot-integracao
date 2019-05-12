@@ -12,9 +12,50 @@
 	</h:head>
 	
 	<h:body>
-		<h:outputLabel for="titulo" value="Titulo:"/>
-		<h:inputText id="titulo"/>
-		<h:commandButton value="Salvar"/>
-		<p:commandButton value="Salvar" />
+		
+		<h1>Novo Livro</h1>
+		
+		<h:form>
+			<fieldset>
+				<legend>Dados do Livro</legend>
+				<h:panelGrid columns="2">
+				
+					<h:outputLabel value="Titulo:" for="titulo" />
+					<h:inputText id="titulo" value="#{livroCadastroBean.livro.titulo}"/>
+					
+					<h:outputLabel value="ISBN:" for="isbn" />
+					<h:inputText id="isbn" value="#{livroCadastroBean.livro.isbn}"/>
+					
+					<h:outputLabel value="Preço:" for="preco" />
+					<h:inputText id="preco" value="#{livroCadastroBean.livro.preco}"/>
+					
+					<h:outputLabel value="Data de Lançamento:" for="dataLancamento" />
+					<h:inputText id="dataLancamento" value="#{livroCadastroBean.livro.dataLancamento.time}">
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+					</h:inputText>
+					
+				</h:panelGrid>
+			</fieldset>
+			
+			<fieldset>
+				<legend>Dados do Autor</legend>
+				<h:outputLabel	value="Selecione Autor:" for="autor"/>
+				<h:selectOneMenu value="#{livroCadastroBean.autorId}">
+					<f:selectItems value="#{livroCadastroBean.autores}" var="autor" 
+								  itemLabel="#{autor.nome}" itemValue="#{autor.id}" />
+				</h:selectOneMenu>
+				<h:commandButton value="Adicionar Autor" action="#{livroCadastroBean.adicionarAutor}"/>
+				
+				<h:dataTable value="#{livroCadastroBean.autoresDolivro}" var="autor">
+					<h:column>
+						<h:outputText value="#{autor.nome}" />
+					</h:column>
+				</h:dataTable>
+				
+			</fieldset>
+			
+			<h:commandButton value="Salvar" action="#{livroCadastroBean.salvar}" />
+			
+		</h:form>		
 	</h:body>
 </html>

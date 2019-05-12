@@ -14,6 +14,6 @@ public interface IService<T> {
 
 	void deletarPorId(int id);
 
-	List<T> buscatTodos();
+	List<T> buscarTodos();
 
 }

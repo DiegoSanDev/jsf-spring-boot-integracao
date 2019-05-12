@@ -29,6 +29,7 @@ public class JsfSpringBootApplication implements ServletContextAware {
 	public ServletContextInitializer servletContextInitializer() {
 		return sc -> {
 			sc.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
+			sc.setInitParameter("primefaces.FONT_AWESOME", "true");
 		};
 	}
 

@@ -13,9 +13,9 @@
 	
 	<h:body>
 	
-			<h:form>
-				
+			<h:form id="formCliente">
 				<h:messages/>
+				<h:inputHidden id="idCliente" value="#{clienteCadastroBean.cliente.id}" />
 				
 				<p:panelGrid >
 					
@@ -29,7 +29,8 @@
 					
 						<p:column><p:outputLabel for="nome" value="Nome/Razão Social:" /></p:column>
 						<p:column> 
-							<p:inputText id="nome" value="#{clienteCadastroBean.cliente.nome}"/>
+							<p:inputText id="nome" value="#{clienteCadastroBean.cliente.nome}"
+										 required="true" requiredMessage="Campo Nome/Razão Social é obrigatório" />
 						</p:column>
 						
 						<p:column><p:outputLabel for="cpfOuCnpj" value="CPF/CNPJ:" /></p:column>
@@ -55,7 +56,7 @@
 					<f:facet name="footer">
 						<p:row>
 							<p:column colspan="4">
-								<p:commandButton action="#{clienteCadastroBean.salvar}"	value="Salvar" />
+								<p:commandButton action="#{clienteCadastroBean.salvar}"	value="Salvar" update="formCliente"/>
 							</p:column>
 						</p:row>
 					</f:facet>

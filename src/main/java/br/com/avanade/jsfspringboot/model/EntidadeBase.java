@@ -42,7 +42,7 @@ public abstract class EntidadeBase {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "data_alteracao", nullable = false, updatable = false)
+	@Column(name = "data_alteracao")
 	public Calendar getDataAlteracao() {
 		return dataAlteracao;
 	}

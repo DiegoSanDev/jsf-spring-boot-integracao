@@ -12,8 +12,58 @@
 	</h:head>
 	
 	<h:body>
+	
+		<h:form>
 		
-		lista de clientes -- 
+			<p:toolbar>
+		        
+		        <f:facet name="left">
+		            <p:commandButton value="Novo" action="#{clienteCadastroBean.novo}" icon="fa fa-plus" />
+		        </f:facet>
+		        
+		         <f:facet name="right">
+		            <p:outputLabel value="Consulta de clientes"/>
+		        </f:facet>
+		        
+		    </p:toolbar>
 		
+		    <p:dataTable style="margin-top:10px;" var="cliente" value="#{flash['clientes']}" rows="10"
+		                 paginator="true"
+		                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		                 rowsPerPageTemplate="5,10,15">
+		                 
+		        <p:column headerText="Id" width="2%">
+		            <h:outputText value="#{cliente.id}" />
+		        </p:column>
+		 
+		        <p:column headerText="Nome">
+		            <h:outputText value="#{cliente.nome}" />
+		        </p:column>
+		 
+		        <p:column headerText="E-mail">
+		            <h:outputText value="#{cliente.email}" />
+		        </p:column>
+		 
+		        <p:column headerText="CPF/CNPJ">
+		            <h:outputText value="#{cliente.cpfOuCnpj}" />
+		        </p:column>
+		        
+		        <p:column headerText="Ação" width="10%" style="text-align: center;">
+		            <p:commandLink action="#{clienteCadastroBean.editar}" 
+		            	style="margin-right:20px;" title="Editar">
+		            	<i class="fa fa-edit"></i>
+		            	<f:param name="id" value="#{cliente.id}"></f:param>
+		            </p:commandLink>
+		            <p:commandLink title="Visualizar">
+		            	<i class="fa fa-search"></i>
+		            </p:commandLink>
+		        </p:column>
+		        
+		    </p:dataTable>
+		    
+		</h:form>
+		
+		 
+
 	</h:body>
 </html>
